@@ -9,6 +9,12 @@ function Playercard() {
     document.getElementById("currentPhase").innerHTML = phase;
   }
 
+  function updateScore() {
+    let points = Number(prompt("How many points are you adding?"));
+    score += points;
+    document.getElementById("currentScore").innerHTML = score;
+  }
+
   return (
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
@@ -16,7 +22,7 @@ function Playercard() {
         <button type="button" class="btn btn-primary" onClick={advancePhase}>
           Phase <span id="currentPhase">1</span>
         </button>
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" onClick={updateScore}>
           Score: <span id="currentScore">0</span>
         </button>
       </div>
