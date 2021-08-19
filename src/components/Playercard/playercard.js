@@ -1,29 +1,6 @@
 import React from "react";
 
 function Playercard({ player, changeName, advancePhase, updateScore }) {
-  let playerName = "New Player";
-  let phase = 1;
-  let score = 0;
-
-  //   function changeName() {
-  //     playerName = prompt("What is this player's name?");
-  //     if (playerName !== "") {
-  //       document.getElementById("currentPlayerName").innerHTML = playerName;
-  //     }
-  //   }
-  //   function advancePhase() {
-  //     phase += 1;
-  //     document.getElementById("currentPhase").innerHTML = phase;
-  //   }
-
-  //   function updateScore() {
-  //     let points = Number(
-  //       prompt("How many points are you adding to " + playerName + "'s score?")
-  //     );
-  //     score += points;
-  //     document.getElementById("currentScore").innerHTML = score;
-  //   }
-
   return (
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">

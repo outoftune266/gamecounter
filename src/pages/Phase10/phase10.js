@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Playercard from "../../components/Playercard/playercard";
+import Footer from "../../components/Footer/footer";
 
 function Phase10Game() {
   const [playerCount, setPlayerCount] = useState(1);
@@ -88,6 +89,7 @@ function Phase10Game() {
         </div>
       </nav>
       {playerList}
+      <Footer></Footer>
     </div>
   );
 }
