@@ -25,15 +25,19 @@ function Phase10Game() {
 
   function changeName(target) {
     console.log(target.target.id);
+    let playerlist = players;
     let playerID = target.target.id;
     let playerName = prompt("What is this player's name?");
-    let playerlist = players;
-    for (let i = 0; i < players.length; i++) {
-      if (playerlist[i].id == playerID) {
-        playerlist[i].name = playerName;
-        updateStates(playerlist);
-        break;
+    if (playerName != null && playerName != "") {
+      for (let i = 0; i < players.length; i++) {
+        if (playerlist[i].id == playerID) {
+          playerlist[i].name = playerName;
+          updateStates(playerlist);
+          break;
+        }
       }
+    } else {
+      alert("You didn't enter a valid name. Try again");
     }
   }
 
@@ -53,8 +57,23 @@ function Phase10Game() {
   function updateScore(target) {
     let playerID = target.target.id;
     let playerlist = players;
-    let points = Number(prompt("How many points are you adding?"));
-    for (let i = 0; i < players.length; i++) {
+    let points;
+    for (let i = 0; i < playerlist.length; i++) {
+      if (playerlist[i].id == playerID) {
+        points = Number(
+          prompt(
+            `How many points do you want to add to ${playerlist[i].name}'s score?`
+          )
+        );
+        updateScore2(playerID, playerlist, points);
+        break;
+      }
+    }
+  }
+
+  function updateScore2(playerID, playerlist, points) {
+    // let points = Number(prompt("How many points are you adding?"));
+    for (let i = 0; i < playerlist.length; i++) {
       if (playerlist[i].id == playerID) {
         playerlist[i].score += points;
         updateStates(playerlist);
@@ -89,6 +108,15 @@ function Phase10Game() {
         </div>
       </nav>
       {playerList}
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h4">
+            Start by adding Players. Press Player's name to Edit. Press Phase
+            button to advance. Press Score button to add points. Keep track of
+            your score or the whole groups! Have fun!
+          </span>
+        </div>
+      </nav>
       <Footer></Footer>
     </div>
   );
