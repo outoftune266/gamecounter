@@ -25,15 +25,19 @@ function Phase10Game() {
 
   function changeName(target) {
     console.log(target.target.id);
+    let playerlist = players;
     let playerID = target.target.id;
     let playerName = prompt("What is this player's name?");
-    let playerlist = players;
-    for (let i = 0; i < players.length; i++) {
-      if (playerlist[i].id == playerID) {
-        playerlist[i].name = playerName;
-        updateStates(playerlist);
-        break;
+    if (playerName != null && playerName != "") {
+      for (let i = 0; i < players.length; i++) {
+        if (playerlist[i].id == playerID) {
+          playerlist[i].name = playerName;
+          updateStates(playerlist);
+          break;
+        }
       }
+    } else {
+      alert("You didn't enter a valid name. Try again");
     }
   }
 
