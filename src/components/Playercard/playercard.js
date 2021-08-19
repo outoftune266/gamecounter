@@ -1,16 +1,16 @@
 import React from "react";
 
-function Playercard() {
-  let playerName = "Player 1";
+function Playercard({ player, changeName }) {
+  let playerName = "New Player";
   let phase = 1;
   let score = 0;
 
-  function changeName() {
-    playerName = prompt("What is this player's name?");
-    if (playerName !== "") {
-      document.getElementById("currentPlayerName").innerHTML = playerName;
-    }
-  }
+  //   function changeName() {
+  //     playerName = prompt("What is this player's name?");
+  //     if (playerName !== "") {
+  //       document.getElementById("currentPlayerName").innerHTML = playerName;
+  //     }
+  //   }
   function advancePhase() {
     phase += 1;
     document.getElementById("currentPhase").innerHTML = phase;
@@ -27,18 +27,14 @@ function Playercard() {
   return (
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <span
-          id="currentPlayerName"
-          class="navbar-brand mb-0 h1"
-          onClick={changeName}
-        >
-          Player 1
+        <span id={player.id} class="navbar-brand mb-0 h1" onClick={changeName}>
+          {player.name}
         </span>
         <button type="button" class="btn btn-primary" onClick={advancePhase}>
-          Phase <span id="currentPhase">1</span>
+          Phase <span>{player.phase}</span>
         </button>
         <button type="button" class="btn btn-primary" onClick={updateScore}>
-          Score: <span id="currentScore">0</span>
+          Score: <span>{player.score}</span>
         </button>
       </div>
       <div class="container-fluid"></div>
