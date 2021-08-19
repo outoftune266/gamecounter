@@ -8,10 +8,10 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/gamecounter/">
             <Homepage></Homepage>
           </Route>
-          <Route exact path="/phase10">
+          <Route exact path="/phase10/">
             <Phase10Game></Phase10Game>
           </Route>
         </Switch>
