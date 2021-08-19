@@ -7,12 +7,26 @@ function Phase10Game() {
   //let playerCount = 0;
   const [playerList, setPlayerList] = useState();
 
+  function updateStates(playerlist) {
+    let transformedList = playerlist.map((player) => (
+      <Playercard
+        player={player}
+        changeName={changeName}
+        advancePhase={advancePhase}
+        updateScore={updateScore}
+      />
+    ));
+    setPlayerList(transformedList);
+    console.log(playerlist);
+    setPlayers(playerlist);
+    console.log(players);
+  }
+
   function changeName(target) {
     console.log(target.target.id);
     let playerID = target.target.id;
     let playerName = prompt("What is this player's name?");
     let playerlist = players;
-
     for (let i = 0; i < players.length; i++) {
       if (playerlist[i].id == playerID) {
         playerlist[i].name = playerName;
@@ -22,14 +36,30 @@ function Phase10Game() {
     }
   }
 
-  function updateStates(playerlist) {
-    let transformedList = playerlist.map((player) => (
-      <Playercard player={player} changeName={changeName} />
-    ));
-    setPlayerList(transformedList);
-    console.log(playerlist);
-    setPlayers(playerlist);
-    console.log(players);
+  function advancePhase(target) {
+    console.log(target.target.id);
+    let playerID = target.target.id;
+    let playerlist = players;
+    for (let i = 0; i < players.length; i++) {
+      if (playerlist[i].id == playerID) {
+        playerlist[i].phase += 1;
+        updateStates(playerlist);
+        break;
+      }
+    }
+  }
+
+  function updateScore(target) {
+    let playerID = target.target.id;
+    let playerlist = players;
+    let points = Number(prompt("How many points are you adding?"));
+    for (let i = 0; i < players.length; i++) {
+      if (playerlist[i].id == playerID) {
+        playerlist[i].score += points;
+        updateStates(playerlist);
+        break;
+      }
+    }
   }
 
   function addPlayer() {
@@ -45,13 +75,6 @@ function Phase10Game() {
     });
 
     updateStates(playerlist);
-    // let transformedList = playerlist.map((player) => (
-    //   <Playercard player={player} changeName={changeName} />
-    // ));
-    // setPlayerList(transformedList);
-    // console.log(playerlist);
-    // setPlayers(playerlist);
-    // console.log(players);
   }
 
   return (
