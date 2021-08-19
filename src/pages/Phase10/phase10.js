@@ -108,15 +108,58 @@ function Phase10Game() {
         </div>
       </nav>
       {playerList}
+
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <span class="navbar-brand mb-0 h4">
-            Start by adding Players. Press Player's name to Edit. Press Phase
-            button to advance. Press Score button to add points. Keep track of
-            your score or the whole groups! Have fun!
-          </span>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Instructions
+          </button>
         </div>
       </nav>
+
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Instructions
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              {" "}
+              Start by adding Players. Press Player's name to Edit. Press Phase
+              button to advance. Press Score button to add points. Keep track of
+              your score or the whole groups! Have fun!
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <Footer></Footer>
     </div>
   );
