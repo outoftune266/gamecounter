@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/gamecounter/static/css/main.a617e044.chunk.css",
-    "main.js": "/gamecounter/static/js/main.57d5d194.chunk.js",
-    "main.js.map": "/gamecounter/static/js/main.57d5d194.chunk.js.map",
+    "main.js": "/gamecounter/static/js/main.652c1266.chunk.js",
+    "main.js.map": "/gamecounter/static/js/main.652c1266.chunk.js.map",
     "runtime-main.js": "/gamecounter/static/js/runtime-main.fb6f55d2.js",
     "runtime-main.js.map": "/gamecounter/static/js/runtime-main.fb6f55d2.js.map",
-    "static/js/2.e19488a9.chunk.js": "/gamecounter/static/js/2.e19488a9.chunk.js",
-    "static/js/2.e19488a9.chunk.js.map": "/gamecounter/static/js/2.e19488a9.chunk.js.map",
+    "static/js/2.506841f9.chunk.js": "/gamecounter/static/js/2.506841f9.chunk.js",
+    "static/js/2.506841f9.chunk.js.map": "/gamecounter/static/js/2.506841f9.chunk.js.map",
     "static/js/3.68976a42.chunk.js": "/gamecounter/static/js/3.68976a42.chunk.js",
     "static/js/3.68976a42.chunk.js.map": "/gamecounter/static/js/3.68976a42.chunk.js.map",
     "index.html": "/gamecounter/index.html",
     "static/css/main.a617e044.chunk.css.map": "/gamecounter/static/css/main.a617e044.chunk.css.map",
-    "static/js/2.e19488a9.chunk.js.LICENSE.txt": "/gamecounter/static/js/2.e19488a9.chunk.js.LICENSE.txt"
+    "static/js/2.506841f9.chunk.js.LICENSE.txt": "/gamecounter/static/js/2.506841f9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fb6f55d2.js",
-    "static/js/2.e19488a9.chunk.js",
+    "static/js/2.506841f9.chunk.js",
     "static/css/main.a617e044.chunk.css",
-    "static/js/main.57d5d194.chunk.js"
+    "static/js/main.652c1266.chunk.js"
   ]
 }
