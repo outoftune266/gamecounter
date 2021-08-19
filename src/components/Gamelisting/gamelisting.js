@@ -9,7 +9,7 @@ function Gamelisting() {
           <span class="navbar-brand mb-0 h1">Phase 10: 2-6 players</span>
           <Link to="/phase10">
             <button type="button" class="btn btn-success">
-              Start New Game
+              Play!
             </button>
           </Link>
         </div>
