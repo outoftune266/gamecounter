@@ -108,6 +108,15 @@ function Phase10Game() {
         </div>
       </nav>
       {playerList}
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h4">
+            Start by adding Players. Press Player's name to Edit. Press Phase
+            button to advance. Press Score button to add points. Keep track of
+            your score or the whole groups! Have fun!
+          </span>
+        </div>
+      </nav>
       <Footer></Footer>
     </div>
   );
