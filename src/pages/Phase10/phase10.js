@@ -53,8 +53,23 @@ function Phase10Game() {
   function updateScore(target) {
     let playerID = target.target.id;
     let playerlist = players;
-    let points = Number(prompt("How many points are you adding?"));
-    for (let i = 0; i < players.length; i++) {
+    let points;
+    for (let i = 0; i < playerlist.length; i++) {
+      if (playerlist[i].id == playerID) {
+        points = Number(
+          prompt(
+            `How many points do you want to add to ${playerlist[i].name}'s score?`
+          )
+        );
+        updateScore2(playerID, playerlist, points);
+        break;
+      }
+    }
+  }
+
+  function updateScore2(playerID, playerlist, points) {
+    // let points = Number(prompt("How many points are you adding?"));
+    for (let i = 0; i < playerlist.length; i++) {
       if (playerlist[i].id == playerID) {
         playerlist[i].score += points;
         updateStates(playerlist);
