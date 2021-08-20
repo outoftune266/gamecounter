@@ -5,7 +5,6 @@ import Footer from "../../components/Footer/footer";
 function Phase10Game() {
   const [playerCount, setPlayerCount] = useState(1);
   const [players, setPlayers] = useState([]);
-  //let playerCount = 0;
   const [playerList, setPlayerList] = useState();
 
   function updateStates(playerlist) {
