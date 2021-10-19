@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from "./pages/Homepage/homepage";
 import Phase10Game from "./pages/Phase10/phase10";
 import AscensionGame from "./pages/Ascension/ascension";
+import AscensionStore from "./utils/AscensionStore";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
             <Phase10Game />
           </Route>
           <Route exact path="/ascension/">
-            <AscensionGame />
+            <AscensionStore>
+              <AscensionGame />
+            </AscensionStore>
           </Route>
         </Switch>
       </Router>

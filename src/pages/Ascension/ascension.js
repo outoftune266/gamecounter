@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Footer from "../../components/Footer/footer";
 import AscensionPlayercard from "../../components/AscensionPlayercard/ascensionplayercard";
+import { AscensionContext } from "../../utils/AscensionStore";
+
 import Playercard from "../../components/Playercard/playercard";
 
 function AscensionGame() {
@@ -8,6 +10,8 @@ function AscensionGame() {
   const [players, setPlayers] = useState([]);
   const [playerList, setPlayerList] = useState();
   const [remainingHonor, setRemainingHonor] = useState(0);
+
+  const { ascensionState, setAscensionState } = useContext(AscensionContext);
 
   function updateStates(playerlist, points) {
     console.log(points);
@@ -73,22 +77,41 @@ function AscensionGame() {
     }
   }
 
+  // function addPlayer() {
+  //   if (playerCount == 5) {
+  //     alert("4 is the maximum number of players for this game");
+  //   } else {
+  //     setRemainingHonor(remainingHonor + 30);
+  //     setPlayerCount(playerCount + 1);
+  //     console.log(playerCount);
+  //     console.log(remainingHonor);
+  //     let playerlist = players;
+
+  //     playerlist.push({
+  //       id: playerCount,
+  //       name: "Player " + playerCount,
+  //       honor: 0,
+  //     });
+  //     updateStates(playerlist);
+  //   }
+  // }
+
   function addPlayer() {
-    if (playerCount == 5) {
+    if (ascensionState.players.length == 4) {
       alert("4 is the maximum number of players for this game");
     } else {
-      setRemainingHonor(remainingHonor + 30);
-      setPlayerCount(playerCount + 1);
-      console.log(playerCount);
-      console.log(remainingHonor);
-      let playerlist = players;
+      let playerlist = ascensionState.players;
 
       playerlist.push({
-        id: playerCount,
-        name: "Player " + playerCount,
-        honor: 0,
+        id: playerlist.length + 1,
+        name: "Player " + (playerlist.length + 1),
+        score: 0,
       });
-      updateStates(playerlist);
+
+      setAscensionState({
+        honor: ascensionState.honor + 30,
+        players: playerlist,
+      });
     }
   }
 
@@ -108,11 +131,12 @@ function AscensionGame() {
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">
-            Remaining Honor Pool: {remainingHonor}
+            Remaining Honor Pool: {ascensionState.honor}
           </span>
         </div>
       </nav>
-      {playerList}
+      {/* {playerList} */}
+      <AscensionPlayercard />
       <Footer />
     </div>
   );
