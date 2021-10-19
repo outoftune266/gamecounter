@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../../components/Footer/footer";
+import AscensionPlayercard from "../../components/AscensionPlayercard/ascensionplayercard";
 import Playercard from "../../components/Playercard/playercard";
 
 function AscensionGame() {
@@ -8,12 +9,50 @@ function AscensionGame() {
   const [playerList, setPlayerList] = useState();
   const [remainingHonor, setRemainingHonor] = useState(0);
 
-  function updateStates(playerlist) {
+  function updateStates(playerlist, points) {
+    console.log(points);
+    if (points) {
+      console.log(remainingHonor);
+      let honor = remainingHonor - points;
+      console.log(honor);
+      //setRemainingHonor(remainingHonor - points);
+    }
     let transformedList = playerlist.map((player) => (
-      <Playercard player={player} changeName={changeName} />
+      <AscensionPlayercard
+        player={player}
+        changeName={changeName}
+        updateScore={updateScore}
+      />
     ));
     setPlayerList(transformedList);
     setPlayers(playerlist);
+  }
+
+  function updateScore(target) {
+    let playerID = target.target.id;
+    let playerlist = players;
+    let points;
+    for (let i = 0; i < playerlist.length; i++) {
+      if (playerlist[i].id == playerID) {
+        points = Number(
+          prompt(
+            `How many honor do you want to add to ${playerlist[i].name}'s score?`
+          )
+        );
+        updateScore2(playerID, playerlist, points);
+        break;
+      }
+    }
+  }
+
+  function updateScore2(playerID, playerlist, points) {
+    for (let i = 0; i < playerlist.length; i++) {
+      if (playerlist[i].id == playerID) {
+        playerlist[i].honor += points;
+        updateStates(playerlist, points);
+        break;
+      }
+    }
   }
 
   function changeName(target) {
@@ -38,9 +77,10 @@ function AscensionGame() {
     if (playerCount == 5) {
       alert("4 is the maximum number of players for this game");
     } else {
-      setPlayerCount(playerCount + 1);
       setRemainingHonor(remainingHonor + 30);
+      setPlayerCount(playerCount + 1);
       console.log(playerCount);
+      console.log(remainingHonor);
       let playerlist = players;
 
       playerlist.push({
