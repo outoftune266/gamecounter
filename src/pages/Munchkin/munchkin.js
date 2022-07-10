@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import Playercard from "../../components/Playercard/playercard";
+import Munchkinplayercard from "../../components/MunchkinPlayercard/munchkinplayercard";
 import Footer from "../../components/Footer/footer";
 
-function Phase10Game() {
+function MunchkinGame() {
   const [playerCount, setPlayerCount] = useState(1);
   const [players, setPlayers] = useState([]);
   const [playerList, setPlayerList] = useState();
 
   function updateStates(playerlist) {
     let transformedList = playerlist.map((player) => (
-      <Playercard
+      <Munchkinplayercard
         player={player}
         changeName={changeName}
-        advancePhase={advancePhase}
-        updateScore={updateScore}
+        levelUp={levelUp}
+        levelDown={levelDown}
       />
     ));
     setPlayerList(transformedList);
@@ -40,41 +41,26 @@ function Phase10Game() {
     }
   }
 
-  function advancePhase(target) {
+  function levelUp(target) {
     console.log(target.target.id);
     let playerID = target.target.id;
     let playerlist = players;
     for (let i = 0; i < players.length; i++) {
       if (playerlist[i].id == playerID) {
-        playerlist[i].phase += 1;
+        playerlist[i].level += 1;
         updateStates(playerlist);
         break;
       }
     }
   }
 
-  function updateScore(target) {
+  function levelDown(target) {
+    console.log(target.target.id);
     let playerID = target.target.id;
     let playerlist = players;
-    let points;
-    for (let i = 0; i < playerlist.length; i++) {
+    for (let i = 0; i < players.length; i++) {
       if (playerlist[i].id == playerID) {
-        points = Number(
-          prompt(
-            `How many points do you want to add to ${playerlist[i].name}'s score?`
-          )
-        );
-        updateScore2(playerID, playerlist, points);
-        break;
-      }
-    }
-  }
-
-  function updateScore2(playerID, playerlist, points) {
-    // let points = Number(prompt("How many points are you adding?"));
-    for (let i = 0; i < playerlist.length; i++) {
-      if (playerlist[i].id == playerID) {
-        playerlist[i].score += points;
+        playerlist[i].level -= 1;
         updateStates(playerlist);
         break;
       }
@@ -89,10 +75,8 @@ function Phase10Game() {
     playerlist.push({
       id: playerCount,
       name: "Player " + playerCount,
-      phase: 1,
-      score: 0,
+      level: 1,
     });
-
     updateStates(playerlist);
   }
 
@@ -100,7 +84,7 @@ function Phase10Game() {
     <div>
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">Phase 10</span>
+          <span class="navbar-brand mb-0 h1">Munchkin</span>
           <button type="button" class="btn btn-success" onClick={addPlayer}>
             + Players
           </button>
@@ -143,9 +127,7 @@ function Phase10Game() {
             </div>
             <div class="modal-body">
               {" "}
-              Start by adding Players. Press Player's name to Edit. Press Phase
-              button to advance. Press Score button to add points. Keep track of
-              your score or the whole groups! Have fun!
+              Start by adding Players. Press Player's name to Edit.
             </div>
             <div class="modal-footer">
               <button
@@ -164,4 +146,4 @@ function Phase10Game() {
   );
 }
 
-export default Phase10Game;
+export default MunchkinGame;
