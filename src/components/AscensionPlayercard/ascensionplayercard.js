@@ -22,19 +22,23 @@ import { AscensionContext } from "../../utils/AscensionStore";
 //   );
 // }
 
-function AscensionPlayercard() {
+function AscensionPlayercard({ updateScore, players }) {
   const { ascensionState } = useContext(AscensionContext);
-  console.log(ascensionState);
-
+  console.log(players);
   return (
     <div>
       {ascensionState.players.map((player) => (
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light bg-light" key={player.id}>
           <div class="container-fluid">
             <span id={player.id} class="navbar-brand mb-0 h1">
               {player.name}
             </span>
-            <button id={player.id} type="button" class="btn btn-primary">
+            <button
+              id={player.id}
+              type="button"
+              class="btn btn-primary"
+              onClick={updateScore}
+            >
               Honor: <span>{player.score}</span>
             </button>
           </div>

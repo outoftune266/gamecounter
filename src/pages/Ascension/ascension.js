@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Footer from "../../components/Footer/footer";
 import AscensionPlayercard from "../../components/AscensionPlayercard/ascensionplayercard";
 import { AscensionContext } from "../../utils/AscensionStore";
@@ -12,6 +12,10 @@ function AscensionGame() {
   const [remainingHonor, setRemainingHonor] = useState(0);
 
   const { ascensionState, setAscensionState } = useContext(AscensionContext);
+
+  useEffect(() => {
+    console.log(ascensionState);
+  });
 
   function updateStates(playerlist, points) {
     console.log(points);
@@ -32,19 +36,51 @@ function AscensionGame() {
     setPlayers(playerlist);
   }
 
+  // function updateScore(target) {
+  //   let playerID = target.target.id;
+  //   let playerlist = players;
+  //   let points;
+  //   for (let i = 0; i < playerlist.length; i++) {
+  //     if (playerlist[i].id == playerID) {
+  //       points = Number(
+  //         prompt(
+  //           `How many honor do you want to add to ${playerlist[i].name}'s score?`
+  //         )
+  //       );
+  //       updateScore2(playerID, playerlist, points);
+  //       break;
+  //     }
+  //   }
+  // }
+
   function updateScore(target) {
+    console.log(target.target.id);
     let playerID = target.target.id;
-    let playerlist = players;
+    let state = ascensionState;
     let points;
-    for (let i = 0; i < playerlist.length; i++) {
-      if (playerlist[i].id == playerID) {
+
+    for (let i = 0; i < state.players.length; i++) {
+      if (state.players[i].id == playerID) {
         points = Number(
           prompt(
-            `How many honor do you want to add to ${playerlist[i].name}'s score?`
+            `How many honor do you want to add to ${state.players[i].name}'s score?'`
           )
         );
-        updateScore2(playerID, playerlist, points);
-        break;
+        updateHonor(playerID, points, state);
+      }
+    }
+  }
+
+  function updateHonor(playerID, points, state) {
+    for (let i = 0; i < state.players.length; i++) {
+      if (state.players[i].id == playerID) {
+        state.players[i].score += points;
+        state.honor = state.honor - points;
+        console.log(state);
+        setAscensionState(state);
+        // console.log(state.players[i].score);
+        // console.log(state.honor);
+        // console.log(ascensionState);
       }
     }
   }
@@ -136,7 +172,10 @@ function AscensionGame() {
         </div>
       </nav>
       {/* {playerList} */}
-      <AscensionPlayercard />
+      <AscensionPlayercard
+        updateScore={updateScore}
+        players={ascensionState.players}
+      />
       <Footer />
     </div>
   );
