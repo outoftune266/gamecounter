@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1"> &copy; Zak Monnet, 2021</span>
+        <span class="navbar-brand mb-0 h1"> &copy; Zak Monnet, 2024</span>
       </div>
     </footer>
   );
