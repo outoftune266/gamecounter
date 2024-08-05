@@ -127,7 +127,7 @@ function MunchkinGame() {
             </div>
             <div class="modal-body">
               {" "}
-              Start by adding Players. Press Player's name to Edit.
+              Start by adding Players. Press Player's name to Edit. Use the <b>Lvl +</b> and <b>Lvl -</b> buttons to increase or decrease each players level. Have fun!
             </div>
             <div class="modal-footer">
               <button
